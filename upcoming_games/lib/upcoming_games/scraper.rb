@@ -13,7 +13,6 @@ class UpcomingGames::Scraper
         :url =>game.css("div.game-title h3 a").attribute("href").value
       }
     end
-    binding.pry
   end
 
 end

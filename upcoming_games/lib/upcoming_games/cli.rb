@@ -1,6 +1,7 @@
 class UpcomingGames::CLI
 
   def call
+    create_games
     list_games
     menu
     goodbye
@@ -8,12 +9,13 @@ class UpcomingGames::CLI
 
   def create_games
       games_array = UpcomingGames::Scraper.scrape_upcoming_list
-      Game.create_from_collection(games_array)
+      UpcomingGames::Game.create_from_collection(games_array)
   end
 
   def list_games
     puts "Ten Upcoming PC Games"
     @games = UpcomingGames::Game.all
+    @games.each.with_index(1){|game, i| puts "#{i}. #{game.title} - #{game.genre} - #{game.publisher} - #{game.release_date}"}
   end
 
   def menu
