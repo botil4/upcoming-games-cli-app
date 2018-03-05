@@ -12,24 +12,26 @@ class UpcomingGames::CLI
       UpcomingGames::Game.create_from_collection(games_array)
   end
 
-  def list_games
+  def list_games(index = 1..10)
     puts "Ten Upcoming PC Games"
     @games = UpcomingGames::Game.all
-    @games.each.with_index(1){|game, i| puts "#{i}. #{game.title} - #{game.genre} - #{game.publisher} - #{game.release_date}"}
+    @games[index].each.with_index(index.min){|game, i| puts "#{i}. #{game.title} - #{game.genre} - #{game.publisher} - #{game.release_date}"}
   end
 
   def menu
-    puts "Enter number for game you want more information on:"
+    puts "Enter number for game you want more information on or type exit:"
     input = nil
     while input != "exit"
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "Game 1 description"
-      when "2"
-        puts "Game 2 description"
-      when "3"
-        puts "Game 3 description"
+
+      if input.to_i > 0
+        puts @games[input.to_i-1]
+      elsif input == "list"
+        list_games
+      elsif input == "next"
+        list_games(11..20)
+      else
+        puts "Type list, exit, or number of game for description."
       end
     end
   end
