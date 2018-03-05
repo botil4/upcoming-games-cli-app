@@ -1,6 +1,6 @@
 class UpcomingGames::Game
 
-  attr_accessor :title, :genre, :publisher, :release_date, :url
+  attr_accessor :title, :genre, :publisher, :release_date, :url, :description
 
   @@all = []
 

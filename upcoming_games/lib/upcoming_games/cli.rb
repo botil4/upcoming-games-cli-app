@@ -12,6 +12,10 @@ class UpcomingGames::CLI
       UpcomingGames::Game.create_from_collection(games_array)
   end
 
+  def add_description(game)
+    game.description = UpcomingGames::Scraper.scrape_description(game.url)
+  end
+
   def list_games(index = 1..10)
     puts "Ten Upcoming PC Games"
     @games = UpcomingGames::Game.all
@@ -19,17 +23,20 @@ class UpcomingGames::CLI
   end
 
   def menu
-    puts "Enter number for game you want more information on or type exit:"
     input = nil
     while input != "exit"
+      puts "Enter number for game you want more information on or type exit:"
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @games[input.to_i-1]
+        add_description(@games[input.to_i])
+        puts @games[input.to_i].description
       elsif input == "list"
         list_games
       elsif input == "next"
         list_games(11..20)
+      elsif input == "exit"
+
       else
         puts "Type list, exit, or number of game for description."
       end
