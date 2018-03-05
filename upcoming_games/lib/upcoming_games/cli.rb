@@ -6,6 +6,11 @@ class UpcomingGames::CLI
     goodbye
   end
 
+  def create_games
+      games_array = UpcomingGames::Scraper.scrape_upcoming_list
+      Game.create_from_collection(games_array)
+  end
+
   def list_games
     puts "Ten Upcoming PC Games"
     @games = UpcomingGames::Game.all

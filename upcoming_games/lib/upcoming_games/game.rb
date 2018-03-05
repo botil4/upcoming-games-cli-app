@@ -5,7 +5,11 @@ class UpcomingGames::Game
   @@all = []
 
   def initialize
+    @@all << self
+  end
 
+  def create_from_collection(games_array)
+    games_array.each{|game| Game.new(game)}
   end
 
   def self.all
