@@ -17,4 +17,8 @@ class UpcomingGames::Game
     @@all
   end
 
+  def self.reset
+    @@all.clear
+  end
+
 end

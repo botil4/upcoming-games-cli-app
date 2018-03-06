@@ -10,12 +10,14 @@ class UpcomingGames::CLI
 
   def choose_platform
     puts "Please choose game platform: PC, PS4, Xbox-One:"
-    @input = gets.strip.downcase
+    @platform = gets.strip.downcase
+    self.choose_platform if !["pc", "ps4", "xbox-one"].include?(@platform)
   end
 
   def create_games
-      games_array = UpcomingGames::Scraper.scrape_upcoming_list
-      UpcomingGames::Game.create_from_collection(games_array)
+    UpcomingGames::Game.reset
+    games_array = UpcomingGames::Scraper.scrape_upcoming_list(@platform)
+    UpcomingGames::Game.create_from_collection(games_array)
   end
 
   def add_description(game)
