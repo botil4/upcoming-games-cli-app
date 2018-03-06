@@ -25,7 +25,7 @@ class UpcomingGames::CLI
   end
 
   def list_games(index = 1..10)
-    puts "Ten Upcoming PC Games"
+    puts "Ten Upcoming #{@platform.upcase} Games"
     @games = UpcomingGames::Game.all
     @games[index].each.with_index(index.min){|game, i| puts "#{i}. #{game.title} - #{game.genre} - #{game.publisher} - #{game.release_date}"}
   end
@@ -33,7 +33,7 @@ class UpcomingGames::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter number for game you want more information on, type next for next 10 games, or type exit:"
+      puts "Enter number for game you want more information on, type next for next 10 games, platform to choose new platform, or type exit:"
       input = gets.strip.downcase
 
       if input.to_i > 0
@@ -43,6 +43,10 @@ class UpcomingGames::CLI
         list_games
       elsif input == "next"
         list_games(11..20)
+      elsif input == "platform"
+        choose_platform
+        create_games
+        list_games
       elsif input == "exit"
 
       else
