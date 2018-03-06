@@ -2,9 +2,10 @@
 class UpcomingGames::Scraper
 
   BASE_PATH = "http://www.ign.com/"
+  LIST_PATH = "upcoming/games/"
 
   def self.scrape_upcoming_list
-    doc = Nokogiri::HTML(open(BASE_PATH + "upcoming/games/pc"))
+    doc = Nokogiri::HTML(open(BASE_PATH + LIST_PATH + "pc"))
     games = doc.css("div.clear.gameList-gameShort")
     games.collect do |game|
       {

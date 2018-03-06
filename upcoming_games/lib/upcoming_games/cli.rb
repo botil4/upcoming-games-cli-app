@@ -1,10 +1,16 @@
 class UpcomingGames::CLI
 
   def call
+    choose_platform
     create_games
     list_games
     menu
     goodbye
+  end
+
+  def choose_platform
+    puts "Please choose game platform: PC, PS4, Xbox-One:"
+    @input = gets.strip.downcase
   end
 
   def create_games
@@ -25,7 +31,7 @@ class UpcomingGames::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter number for game you want more information on or type exit:"
+      puts "Enter number for game you want more information on, type next for next 10 games, or type exit:"
       input = gets.strip.downcase
 
       if input.to_i > 0
