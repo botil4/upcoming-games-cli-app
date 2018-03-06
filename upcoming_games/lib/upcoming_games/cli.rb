@@ -33,7 +33,7 @@ class UpcomingGames::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter number for game you want more information on, type next for next 10 games, platform to choose new platform, or type exit:"
+      puts "\nEnter number for game you want more information on, list for first 10 games, next for next 10 games, platform to choose new platform, or type exit:"
       input = gets.strip.downcase
 
       if input.to_i > 0
@@ -50,7 +50,7 @@ class UpcomingGames::CLI
       elsif input == "exit"
 
       else
-        puts "Type list, exit, or number of game for description."
+        puts "\nType list, exit, or number of game for description."
       end
     end
   end
