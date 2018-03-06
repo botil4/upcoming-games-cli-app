@@ -1,8 +1,6 @@
 # UpcomingGames
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/upcoming_games`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a command line interface gem that will pull up a list of upcoming games from a chosen platform.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run 'upcoming_games' in the bin folder to get started. The user will then be prompted to choose a video game platform ("PC", "PS4", or "Xbox-One"). A list of the next 10 games to be released will be shown. User can then input a number of the game they want a description of, or press next for the next 10 games. The user can type 'list' to start the list from game 1 again, or type 'platform' to choose a new platform. Typing 'exit' will exit the program.
 
 ## Development
 
